@@ -4,6 +4,8 @@ const price = document.querySelectorAll('.cards__item-price')
 
 const text = document.querySelectorAll('.cards__item-price span')
 
+let summa = document.querySelector('footer__sum span')
+
 console.log(text[0].textContent)
 const changeClass = (indexClickedTabs) => {
     buttons.forEach((tab, index) => {
@@ -14,22 +16,19 @@ const changeClass = (indexClickedTabs) => {
 }
 
 const sumPrice = (index) => {
-    let price = Number(text[index].textContent)
-    sum +=price
+    let priceText = Number(text[index].textContent)
+    sum = priceText + sum
 }
 
 const showSum = () => {
-    text.textContent = sum
-    console.log(text.textContent)
+    summa.textContent = String(sum)
+    console.log(summa.textContent)
 }
 
 buttons.forEach((tap, index) => {
     tap.addEventListener('click', () => {
         changeClass(index)
         sumPrice(index)
-        console.log(text)
-        text.textContent = String(sum)
-        console.log(text.textContent)
-        console.log(sumPrice(index))
+        showSum()
     })
 })
